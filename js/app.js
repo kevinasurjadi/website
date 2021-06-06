@@ -1,0 +1,3 @@
+(function () {
+	initScroll('app');
+})();
