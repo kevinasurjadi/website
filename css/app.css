@@ -88,6 +88,19 @@ body {
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+.scroll-down, .scroll-top {
+    position: absolute;
+    left: 0;
+    bottom: 2em;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.75);
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.scroll-down i, .scroll-top i {
+    animation: bounce 1s ease infinite;
+}
 
 
 /*
@@ -150,18 +163,6 @@ body {
     font-size: 2em;
     text-align: center;
     opacity: 0.6;
-}
-.scroll-down, .scroll-top {
-    position: absolute;
-    bottom: 2em;
-    z-index: 1;
-    color: rgba(255, 255, 255, 0.75);
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
-}
-.scroll-down i, .scroll-top i {
-    animation: bounce 1s ease infinite;
 }
 @media screen and (max-width: 1440px) {
     .intro .content h1 {
@@ -238,6 +239,7 @@ body {
 .portfolio-page {
     height: auto;
     min-height: 100vh;
+    text-align: center;
 }
 .portfolio-page.intro h1 {
     font-size: 3em;
@@ -254,7 +256,7 @@ body {
     width: 100%;
     max-width: 1366px;
     margin: 0 auto;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .portfolio-page.intro .content .card {
     flex: 0 1 22.5%;
