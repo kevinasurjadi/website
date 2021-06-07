@@ -6,13 +6,16 @@ body {
     color: white;
 }
 
+/*
+** General
+*/
 .app {
     position: relative;
     overflow: hidden;
     transition: 1s cubic-bezier(0.5, 0, 0.5, 1);
     background: linear-gradient(132deg, #FC415A, #591BC5, #212335);
     background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
+    animation: moving-background-gradient 15s ease infinite;
 }
 .page {
     position: relative;
@@ -22,17 +25,67 @@ body {
     cursor: default;
     padding: 2em;
 }
-@keyframes gradient {
-    0% {
-        background-position: 0 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0 50%;
-    }
+.cube {
+    position: absolute;
+    top: 80vh;
+    left: 45vw;
+    width: 10px;
+    height: 10px;
+    border: solid 1px #D7D4E4;
+    border-radius: 4px;
+    transform-origin: top left;
+    transform: scale(0) rotate(0deg) translate(-50%, -50%);
+    animation: background-cube 12s ease-in forwards infinite;
+    z-index: -1;
 }
+.cube:nth-child(2n) {
+    border-color: #FFF;
+}
+.cube:nth-child(2) {
+    animation-delay: 2s;
+    left: 25vw;
+    top: 40vh;
+}
+.cube:nth-child(3) {
+    animation-delay: 4s;
+    left: 75vw;
+    top: 50vh;
+}
+.cube:nth-child(4) {
+    animation-delay: 6s;
+    left: 90vw;
+    top: 10vh;
+}
+.cube:nth-child(5) {
+    animation-delay: 8s;
+    left: 10vw;
+    top: 85vh;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+}  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    left: -2em;
+    bottom: -2.25em;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+/*
+** Intro
+*/
 .intro header {
     display: flex;
     flex-direction: row;
@@ -59,21 +112,7 @@ body {
     cursor: pointer;
 }
 .intro header nav a:hover {
-    animation: rotate 1s ease infinite;
-}
-@keyframes rotate {
-    0% {
-        transform: rotate(0);
-    }
-    40% {
-        transform: rotate(5deg);
-    }
-    70% {
-        transform: rotate(-5deg);
-    }
-    100% {
-        transform: rotate(0);
-    }
+    animation: nav-hover-rotate 1s ease infinite;
 }
 .intro .content {
     display: flex;
@@ -85,50 +124,40 @@ body {
 }
 .intro .content img {
     flex: 1 1 50%;
-    max-width: 0%;
+    max-width: 50%;
     margin: 0 auto;
-    animation: slide-y 2s ease;
-    animation-delay: 3s;
-    -webkit-animation-delay: 2.5s;
-    animation-fill-mode: forwards;
-    -webkit-animation-fill-mode: forwards;
+    animation: intro-image-fade-in 3s ease;
 }
-@keyframes slide-y {
-    0% {
-        opacity: 0;
-        max-width: 25%;
-    }
-    100% {
-        opacity: 1;
-        max-width: 50%;
-    }
+.intro .content .tagline {
+    flex: 0 1 50%;
+    overflow: hidden;
+    animation: expanding-tagline 3s ease;
 }
 .intro .content h1 {
     font-size: 5em;
     text-align: center;
     letter-spacing: 5px;
-    margin: 0 2em;
+    margin: 0 10%;
 }
 .intro .content h2 {
+    font-size: 2em;
     text-align: center;
+    opacity: 0.6;
 }
-.intro .content .tagline {
-    flex: 0 1 50%;
-    overflow: hidden;
-    animation: flex-expand 3s ease;
-}
-@keyframes flex-expand {
-    0% {
-        flex: 0 1 0%;
-        opacity: 0;
+
+@media screen and (max-width: 1024px) {
+    .intro .content img {
+        flex: 1 1 100%;
+        max-width: 85%;
+        animation: none;
     }
-    50% {
-        flex: 0 1 10%;
-        opacity: 0;
+    .intro .content .tagline {
+        flex: 1 1 100%;
+        animation: none;
     }
-    100% {
-        flex: 0 1 50%;
-        opacity: 1;
+    .intro .content h1 {
+        font-size: 3em;
+        margin-bottom: 4em;
     }
 }
 @media screen and (max-width: 768px) {
@@ -141,17 +170,9 @@ body {
     .intro .content {
         justify-content: center;
     }
-    .intro .content img {
-        flex: 1 1 100%;
-        max-width: 80%;
-    }
-    .intro .content .tagline {
-        flex: 1 1 100%;
-    }
     .intro .content h1 {
         font-size: 2em;
         letter-spacing: 3px;
-        margin-bottom: 4em;
     }
 }
 @media screen and (max-width: 600px) {
@@ -169,59 +190,56 @@ body {
     .intro .content .tagline {
         padding: 0
     }
+    .intro .content h2 {
+        font-size: 1em;
+    }
     .intro .content h1 {
         font-size: 1.5em;
+        margin-left: 0;
+        margin-right: 0;
         margin-bottom: 2em;
     }
 }
 @media screen and (max-width: 360px) {
+    .intro .content h2 {
+        font-size: 0.875em;
+    }
     .intro .content h1 {
-        margin-left: 0.5em;
-        margin-right: 0.5em;
+        font-size: 1.25em;
     }
 }
-.cube {
-    position: absolute;
-    top: 80vh;
-    left: 45vw;
-    width: 10px;
-    height: 10px;
-    border: solid 1px #D7D4E4;
-    transform-origin: top left;
-    transform: scale(0) rotate(0deg) translate(-50%, -50%);
-    animation: cube 12s ease-in forwards infinite;
-    z-index: -1;
+
+/*
+** Portfolio
+*/
+
+/*
+** About
+*/
+
+/*
+** Contact
+*/
+.contact .content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
-.cube:nth-child(2n) {
-    border-color: #FFF;
+.contact .content div {
+    text-align: center;
 }
-.cube:nth-child(2) {
-    animation-delay: 2s;
-    left: 25vw;
-    top: 40vh;
+.contact .content a {
+    color: white;
+    text-decoration: none;
 }
-.cube:nth-child(3) {
-    animation-delay: 4s;
-    left: 75vw;
-    top: 50vh;
+.contact .content .social-icon {
+    font-size: 2.5em;
+    margin: 0 0.20em;
 }
-.cube:nth-child(4) {
-    animation-delay: 6s;
-    left: 90vw;
-    top: 10vh;
-}
-.cube:nth-child(5) {
-    animation-delay: 8s;
-    left: 10vw;
-    top: 85vh;
-}
-@keyframes cube {
-    from {
-      transform: scale(0) rotate(0deg) translate(-50%, -50%);
-      opacity: 1;
-    }
-    to {
-      transform: scale(20) rotate(960deg) translate(-50%, -50%);
-      opacity: 0;
-    }
+.contact .content .social-icon:hover {
+    animation: nav-hover-rotate 1s ease infinite;
 }

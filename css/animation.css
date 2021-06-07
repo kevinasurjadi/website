@@ -1,0 +1,72 @@
+@keyframes moving-background-gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+@keyframes nav-hover-rotate {
+    0% {
+        transform: rotate(0);
+    }
+    40% {
+        transform: rotate(10deg);
+    }
+    70% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+@keyframes intro-image-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes expanding-tagline {
+    0% {
+        flex: 0 1 20%;
+        opacity: 0.25;
+    }
+    100% {
+        flex: 0 1 50%;
+        opacity: 1;
+    }
+}
+@keyframes expanding-tagline-mobile {
+    0% {
+        flex: 0 1 50%;
+        opacity: 0.25;
+    }
+    100% {
+        flex: 0 1 100%;
+        opacity: 1;
+    }
+}
+@keyframes background-cube {
+    from {
+      transform: scale(0) rotate(0deg) translate(-50%, -50%);
+      opacity: 1;
+    }
+    to {
+      transform: scale(20) rotate(960deg) translate(-50%, -50%);
+      opacity: 0;
+    }
+}
+@keyframes social-icon-bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(4px);
+        color: black;
+    }
+}
