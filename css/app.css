@@ -77,6 +77,12 @@ body {
     z-index: 1;
     left: -2em;
     bottom: -2.25em;
+    font-size: 1rem !important;
+}
+.tooltip .tooltiptext.top {
+    bottom: auto;
+    left: 0.5em;
+    top: -2em;
 }
 .tooltip:hover .tooltiptext {
     visibility: visible;
@@ -216,6 +222,119 @@ body {
 /*
 ** About
 */
+.about .content {    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+.about .content .photo {
+    position: relative;
+    flex: 0 1 40%;
+    height: 50%;
+}
+.about .content .photo .snapstack {
+    position: relative;
+}
+.about .content .photo .snap {
+    position: absolute;
+    left: 25%;
+    background-color: white;
+    border-radius: 2px;
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.2);
+    transition: all .5s ease;
+    width: 50%;
+}
+.about .content .photo .snap.snap1 {
+    z-index: 1;
+    transform: rotate(-15deg);
+}
+.about .content .photo .snap.snap2 {
+    z-index: 2;
+    transform: rotate(0);
+}
+.about .content .photo .snap:hover {
+    transform: rotate(0) scale(1.2);
+    transition: all .5s ease;
+    z-index: 3;
+}
+.about .content .photo .snap .snap-frame {
+    overflow: hidden;
+    margin: 1em 1em 7em 1em;
+}
+.about .content .photo .snap .snap-frame img {
+    max-width: 500px;
+    width: 100%;
+}
+.about .content .story {
+    flex: 0 1 60%;
+}
+.about .content .story h1 {
+    font-size: 3em;
+    letter-spacing: 1.5px;
+}
+.about .content .story h2 {
+    letter-spacing: 1.2px;
+    line-height: 1.75em;
+}
+.about .content .story a {
+    color: #212335;
+    background: white;
+    padding: 4px;
+    border-radius: 4px;
+}
+@media screen and (max-width: 1024px) {
+    .about .content .photo {
+        flex: 1 1 100%;
+        height: 30%;
+    }
+    .about .content .photo .snap {
+        left: 30%;
+        width: 40%;
+    }
+    .about .content .story {
+        flex: 1 1 100%;
+    }
+}
+@media screen and (max-width: 768px) {
+    .about .content .photo .snap .snap-frame {
+        margin-bottom: 5em;
+    }
+    .about .content .story h1 {
+        font-size: 1.75em;
+    }
+    .about .content .story h2 {
+        font-size: 1em;
+    }
+}
+@media screen and (max-width: 600px) {
+    .about .content .photo {
+        height: 35%;
+    }
+    .about .content .photo .snap {
+        left: 25%;
+        width: 50%;
+    }
+    .about .content .photo .snap .snap-frame {
+        margin: 0.5em 0.5em 3em 0.5em;
+    }
+    .about .content .story h1 {
+        font-size: 1.25em;
+    }
+    .about .content .story h2 {
+        font-size: 0.75em;
+    }
+}
+@media screen and (max-width: 360px) {
+    .about .content .story h1 {
+        font-size: 1em;
+    }
+    .about .content .story h2 {
+        font-size: 0.625em;
+    }
+}
 
 /*
 ** Contact
@@ -242,4 +361,12 @@ body {
 }
 .contact .content .social-icon:hover {
     animation: nav-hover-rotate 1s ease infinite;
+}
+@media screen and (max-width: 600px) {
+    .contact .content h2 {
+        font-size: 1em;
+    }
+    .contact .content .social-icon {
+        font-size: 1.5em;
+    }
 }
