@@ -108,5 +108,19 @@ function initScroll(appId) {
 		app.dispatchEvent(navEvent);
 	}, false);
 
+	const scrollDown = document.querySelectorAll('.scroll-down');
+	scrollDown.forEach((scroll) => {
+		scroll.addEventListener('click', function() {
+			scdir = 'up';
+			app.dispatchEvent(navEvent);
+		}, false);
+	});
+	
+	const scrollTop = document.querySelector('.scroll-top');
+	scrollTop.addEventListener('click', function() {
+		scdir = 'top';
+		app.dispatchEvent(navEvent);
+	});
+
 	app.addEventListener('nav-click', scroll);
 }

@@ -70,3 +70,11 @@
         color: black;
     }
 }
+@keyframes bounce {
+    from {
+        transform: translateY(-1em);
+    }
+    to {
+        transform: translateY(0);
+    }
+}

@@ -151,6 +151,18 @@ body {
     text-align: center;
     opacity: 0.6;
 }
+.scroll-down, .scroll-top {
+    position: absolute;
+    bottom: 2em;
+    z-index: 1;
+    color: rgba(255, 255, 255, 0.75);
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.scroll-down i, .scroll-top i {
+    animation: bounce 1s ease infinite;
+}
 @media screen and (max-width: 1440px) {
     .intro .content h1 {
         font-size: 3em;
