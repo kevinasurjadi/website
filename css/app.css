@@ -24,6 +24,7 @@ body {
     box-sizing: border-box;
     cursor: default;
     padding: 2em;
+    z-index: 0;
 }
 .cube {
     position: absolute;
@@ -212,6 +213,120 @@ body {
     }
     .intro .content h1 {
         font-size: 1.25em;
+    }
+}
+
+/*
+** Portfolio
+*/
+.portfolio-page {
+    height: auto;
+    min-height: 100vh;
+}
+.portfolio-page.intro h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 2em;
+}
+.portfolio-page.intro .content {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    align-items: center;
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+    overflow-y: scroll;
+}
+.portfolio-page.intro .content .card {
+    flex: 0 1 22.5%;
+    width: 100%;
+    background-color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    max-height: 160px;
+    overflow: hidden;
+}
+.portfolio-page.intro .content .card .card-image {
+    position: relative;
+    max-height: 120px;
+    overflow: hidden;
+}
+.portfolio-page.intro .content .card .card-image img {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
+.portfolio-page.intro .content .card .card-image .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    opacity: 0;
+}
+.portfolio-page.intro .content .card .card-image .overlay:hover {
+    opacity: 1;
+    transition: opacity .3s ease;
+}
+.portfolio-page.intro .content .card .card-image h2 {
+    position: absolute;
+    bottom: 0;
+    left: 1em;
+    font-size: 1em;
+}
+.portfolio-page.intro .content .card .card-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5em;
+}
+.portfolio-page.intro .content .card .card-action a {
+    margin: 0 0.25em;
+}
+.portfolio-page.intro .content .card .card-action .chip {
+    float: left;
+    background-color: #212335;
+    padding: 0.25em 1em;
+    border-radius: 12px;
+}
+@media screen and (max-width: 1024px) {
+    .portfolio-page.intro .content .card {
+        flex: 0 1 30%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .portfolio-page.intro h1 {
+        font-size: 1.75em;
+    }
+    .portfolio-page.intro .content {
+        height: 67.5vh;
+        overflow-y: scroll;
+        margin-bottom: 1em;
+    }
+    .portfolio-page.intro .content .card {
+        flex: 0 1 45%;
+    }
+    .portfolio-page.intro .content .card img {
+        padding-left: 0;
+    }
+}
+@media screen and (max-width: 480px) {
+    .portfolio-page.intro .content .card {
+        flex: 0 1 100%;
+    }
+}
+@media screen and (max-width: 360px) {
+    .portfolio-page.intro h1 {
+        font-size: 1.25em;
+    }
+    .portfolio-page.intro .content {
+        height: 67.5vh;
     }
 }
 
