@@ -151,7 +151,11 @@ body {
     text-align: center;
     opacity: 0.6;
 }
-
+@media screen and (max-width: 1440px) {
+    .intro .content h1 {
+        font-size: 3em;
+    }
+}
 @media screen and (max-width: 1024px) {
     .intro .content img {
         flex: 1 1 100%;
