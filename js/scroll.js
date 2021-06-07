@@ -22,12 +22,10 @@ function initScroll(appId) {
 			slength = slength + step;
 		} else if (scdir === 'top') {
 			slength = 0;
-		} else if (scdir === 'portfolio') {
-			slength = -100;
 		} else if (scdir === 'about') {
-			slength = -200;			
+			slength = -100;			
 		} else if (scdir === 'contact') {
-			slength = -300;
+			slength = -200;
 		}
 		if (hold === false) {
 			hold = true;
@@ -97,12 +95,6 @@ function initScroll(appId) {
 	swipe(app);
 	
 	const navEvent = new Event('nav-click');
-
-	const portfolioNav = document.querySelector('#portfolio-nav');
-	portfolioNav.addEventListener('click', function() {
-		scdir = 'portfolio';
-		app.dispatchEvent(navEvent);
-	}, false);
 
 	const aboutNav = document.querySelector('#about-nav');
 	aboutNav.addEventListener('click', function() {
